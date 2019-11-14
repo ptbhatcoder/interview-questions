@@ -2,6 +2,9 @@ import unittest
 import functools
 
 '''
+
+https://www.ideserve.co.in/learn/find-the-number-which-occurs-odd-number-of-times
+
 In an array having positive integers, except for one number which occurs odd number of times, all other numbers occur even number of times. Find the number.
 Example -  
 Input : 2 5 9 1 5 1 8 2 8
