@@ -55,6 +55,10 @@ class CodeTest(unittest.TestCase):
         # note the length is still 3x + 1
         self.assertIsNone(findElementWhichOccursOnceWhileOthersOccurThrice([1,1,1,2,2,5,5,5,3,3,3, 4, 4]))
 
+    def testMaxZero(self):
+        # note the length is still 3x + 1
+        self.assertIsNone(findElementWhichOccursOnceWhileOthersOccurThrice([0,0,0,0,0,0,0]))
+
     def testOnlyOneElementOccursOnce(self):
         self.assertEqual(findElementWhichOccursOnceWhileOthersOccurThrice([1,1,1,2,5,5,5,3,3,3]), 2)
 
