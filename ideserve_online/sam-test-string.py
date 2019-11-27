@@ -1,5 +1,6 @@
 import unittest
 
+
 class StringTest(unittest.TestCase):
     def setUp(self):
         pass
@@ -13,7 +14,7 @@ class StringTest(unittest.TestCase):
     def testIsUpper(self):
         self.assertFalse('foo'.isupper())
         self.assertTrue('FOO'.isupper())
-    
+
     def testStrip(self):
         self.assertEqual('abcdefghijk'.strip('abcd'), 'efghijk')
 
@@ -21,5 +22,6 @@ class StringTest(unittest.TestCase):
         self.assertEqual('some person'.split(' '), ['some', 'person'])
         with self.assertRaises(TypeError):
             'abcd'.split(2)
-    
+
+
 unittest.main()

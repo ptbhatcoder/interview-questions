@@ -14,8 +14,9 @@ Input : 2 3 4 3 1 4 5 1 4 2 5
 Output: 4
 '''
 
+
 def findElementInArrayOccuringOddNumberOfTimes(arr):
-    return  functools.reduce(lambda x,y : x^y, arr, 0)
+    return functools.reduce(lambda x, y: x ^ y, arr, 0)
 
 
 class CodeTest(unittest.TestCase):
@@ -23,10 +24,12 @@ class CodeTest(unittest.TestCase):
         self.assertEqual(findElementInArrayOccuringOddNumberOfTimes([]), 0)
 
     def testAllEvenCountArray(self):
-        self.assertEqual(findElementInArrayOccuringOddNumberOfTimes([1,1,3,3,2,2,6,6,4,4,3,3,5,5,7,7]), 0)
+        self.assertEqual(findElementInArrayOccuringOddNumberOfTimes(
+            [1, 1, 3, 3, 2, 2, 6, 6, 4, 4, 3, 3, 5, 5, 7, 7]), 0)
 
     def testSingleElementOddCountArray(self):
-        self.assertEqual(findElementInArrayOccuringOddNumberOfTimes([1,1,3,3,2,2,6,6,4,4,3,3,5,5,5,7,7]), 5)
+        self.assertEqual(findElementInArrayOccuringOddNumberOfTimes(
+            [1, 1, 3, 3, 2, 2, 6, 6, 4, 4, 3, 3, 5, 5, 5, 7, 7]), 5)
 
 
 unittest.main()

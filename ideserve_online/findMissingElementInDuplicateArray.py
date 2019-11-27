@@ -16,31 +16,34 @@ Output:
 7
 '''
 
+
 def findMissingElementInDuplicateArray(arr, duplicate):
     if not len(arr) or len(arr) != len(duplicate) + 1:
         return None
-    missing = functools.reduce(lambda x,y: x^y, arr+duplicate, 0)
+    missing = functools.reduce(lambda x, y: x ^ y, arr+duplicate, 0)
     if missing or (missing in arr and missing not in duplicate):
         return missing
-    else:
-        raise None
+    return None
+
 
 class CodeTest(unittest.TestCase):
     def testEmptyArray(self):
         self.assertIsNone(findMissingElementInDuplicateArray([], []))
-        
-    
+
     def testInvalidDup(self):
-        self.assertIsNone(findMissingElementInDuplicateArray([1,2, 3], [1]))
+        self.assertIsNone(findMissingElementInDuplicateArray([1, 2, 3], [1]))
 
     def testInvalidLargerDup(self):
-        self.assertIsNone(findMissingElementInDuplicateArray([1,2, 3], [1, 2, 3]))
+        self.assertIsNone(
+            findMissingElementInDuplicateArray([1, 2, 3], [1, 2, 3]))
 
     def testZeroAsAnswer(self):
-        self.assertEqual(findMissingElementInDuplicateArray([1,2, 3, 0], [1, 2, 3]), 0)
+        self.assertEqual(findMissingElementInDuplicateArray(
+            [1, 2, 3, 0], [1, 2, 3]), 0)
 
     def testNonZeroAsValidAnswer(self):
-        self.assertEqual(findMissingElementInDuplicateArray([1,2, 3, 4], [1, 2, 3]), 4)
+        self.assertEqual(findMissingElementInDuplicateArray(
+            [1, 2, 3, 4], [1, 2, 3]), 4)
+
 
 unittest.main()
-    
