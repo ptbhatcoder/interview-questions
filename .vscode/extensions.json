@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "formulahendry.code-runner", // Code runner
+    "ms-python.python", // Python
+    "ms-python.anaconda-extension-pack", // Anaconda extension pack
+    "visualstudioexptteam.vscodeintellicode" // Visual Studio intellicode
+  ]
+}
