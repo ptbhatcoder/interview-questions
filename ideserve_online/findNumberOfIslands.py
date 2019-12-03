@@ -1,11 +1,13 @@
 
 from unittest import main, TestCase
 
+'''
+https://www.ideserve.co.in/learn/number-of-clusters-of-1s
 
-def printMatrix(mat):
-    print('-----------------------------')
-    for row in mat:
-        print(row)
+Given a 2D matrix of 0s and 1s, find total number of clusters formed by elements with value 1.  For example, in the below shown 2D matrix there are total three such clusters.
+
+This problem is also known as 'Number of Islands' problem.
+'''
 
 
 def visit(visited, i, j, mi, mj, mat):

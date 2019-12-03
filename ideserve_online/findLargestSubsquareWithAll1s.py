@@ -1,5 +1,12 @@
 from unittest import main, TestCase
 
+'''
+https://www.ideserve.co.in/learn/maximum-size-square-sub-matrix-with-all-1s
+
+Given a matrix of dimensions mxn having all entries as 1 or 0, find out the size of maximum size square sub-matrix with all 1s.
+
+'''
+
 
 def findLargestSubsquareWithAll1s(mat):
     mxi, mxj, mx = -1, -1, 0
