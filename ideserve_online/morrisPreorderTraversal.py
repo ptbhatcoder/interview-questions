@@ -1,4 +1,4 @@
-from binaryTreeNode import BinaryTreeNode
+from BinaryTree.BinaryTreeNode import BinaryTreeNode
 from unittest import main, TestCase
 
 
