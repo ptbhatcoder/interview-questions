@@ -1,5 +1,11 @@
 from unittest import TestCase, main
 
+'''
+https://www.ideserve.co.in/learn/print-matrix-diagonally
+
+Given a matrix of mxn dimensions, print the elements of the matrix in diagonal order, starting from the top right
+'''
+
 
 def printMatrixDiagonallyFromRight(mat):
     res = []
