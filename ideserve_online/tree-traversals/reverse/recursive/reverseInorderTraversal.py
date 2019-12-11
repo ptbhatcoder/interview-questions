@@ -1,5 +1,12 @@
-from BinaryTree.BinaryTreeNode import BinaryTreeNode
+import sys
+from os import path
+curDirname = path.dirname(__file__)
+while path.basename(path.normpath(curDirname)) != 'ideserve_online':
+    curDirname = path.dirname(curDirname)
+sys.path.insert(0, curDirname)
+
 from unittest import main, TestCase
+from BinaryTree.BinaryTreeNode import BinaryTreeNode
 
 
 def reverseInorder(root, t):
@@ -13,6 +20,7 @@ def reverseInorder(root, t):
 
 class CodeTest(TestCase):
     def testEmpty(self):
+        print('Hello world')
         self.assertListEqual(reverseInorder(BinaryTreeNode(None), []), [])
 
     def testLeftSkewed(self):

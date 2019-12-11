@@ -1,3 +1,10 @@
+import sys
+from os import path
+curDirname = path.dirname(__file__)
+while path.basename(path.normpath(curDirname)) != 'ideserve_online':
+    curDirname = path.dirname(curDirname)
+sys.path.insert(0, curDirname)
+
 from BinaryTree.BinaryTreeNode import BinaryTreeNode
 from unittest import main, TestCase
 
