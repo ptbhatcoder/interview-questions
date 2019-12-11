@@ -44,7 +44,7 @@ def main():
 
     # Print the files
     for elem in listOfFiles:
-        if elem.endswith('.py'):
+        if elem.endswith('.py') and elem != __file__:
             os.system('python ' + elem)
 
 

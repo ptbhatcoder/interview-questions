@@ -20,7 +20,6 @@ def reverseInorder(root, t):
 
 class CodeTest(TestCase):
     def testEmpty(self):
-        print('Hello world')
         self.assertListEqual(reverseInorder(BinaryTreeNode(None), []), [])
 
     def testLeftSkewed(self):
