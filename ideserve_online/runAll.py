@@ -1,5 +1,4 @@
 import os
-import subprocess
 
 '''
     For the given path, get the List of all files in the directory tree 
@@ -31,12 +30,6 @@ def main():
     # Get the list of all files in directory tree at given path
     listOfFiles = getListOfFiles(dirName)
 
-    # Print the files
-    for elem in listOfFiles:
-        print(elem)
-
-    print("****************")
-
     # Get the list of all files in directory tree at given path
     listOfFiles = list()
     for (dirpath, dirnames, filenames) in os.walk(dirName):
@@ -48,5 +41,4 @@ def main():
             os.system('python ' + elem)
 
 
-if __name__ == '__main__':
-    main()
+main()
