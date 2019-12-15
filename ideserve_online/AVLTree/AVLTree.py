@@ -16,28 +16,31 @@ class AVLTree(BinarySearchTree):
         super.__init__(data)
         self.treeRoot.height = 0
 
-    def search(self, key, root=treeRoot):
+    def getRoot(self):
+        return self.treeRoot
+
+    def search(self, key, root):
         return super.search(key, root)
 
-    def findMin(self, root=treeRoot):
+    def findMin(self, root):
         return super.findMin(root)
 
-    def findMax(self, root=treeRoot):
+    def findMax(self, root):
         return super.findMax(root)
 
-    def __getHeight__(self, root=treeRoot):
+    def __getHeight__(self, root):
         if not root:
             return 0
         root.height = max(self.__getHeight__(root.left),
                           self.__getHeight__(root.right)) + 1
         return root.height
 
-    def __getBalance__(self, root=treeRoot):
+    def __getBalance__(self, root):
         if not root:
             return 0
         return self.__getHeight__(root.left) - self.__getHeight__(root.right)
 
-    def __rotateRight__(self, root=treeRoot):
+    def __rotateRight__(self, root):
         if not root:
             return root
         y = root.left
@@ -48,7 +51,7 @@ class AVLTree(BinarySearchTree):
             return y
         return root
 
-    def __rotateLeft__(self, root=treeRoot):
+    def __rotateLeft__(self, root):
         if not root:
             return root
         y = root.right
@@ -59,7 +62,7 @@ class AVLTree(BinarySearchTree):
             return y
         return root
 
-    def insert(self, key, root=treeRoot):
+    def insert(self, key, root):
         if not root:
             root = BinaryTreeNode(key)
             root.height = 0
@@ -90,7 +93,7 @@ class AVLTree(BinarySearchTree):
         root.height = self.__getHeight__(root)
         return root
 
-    def delete(self, key, root=treeRoot):
+    def delete(self, key, root):
         if not root:
             return root
         if key < root.data:
