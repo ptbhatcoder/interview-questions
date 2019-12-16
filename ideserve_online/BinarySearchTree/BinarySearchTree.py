@@ -66,8 +66,10 @@ class BinarySearchTree():
             root.right = self.delete(key, root.right)
         else:
             if root.left and root.right:
-                root.data = self.findMin(root.right)
-                root.right = self.delete(root.data, root.right)
+                swapper = self.findMin(root.right)
+                root.data = swapper.data
+                root.right = self.delete(swapper.data, root.right)
+                return root
             elif root.left:
                 left = root.left
                 del root
@@ -130,12 +132,45 @@ class CodeTest(TestCase):
         root.left.right = BinaryTreeNode(4)
         root.right.left = BinaryTreeNode(6)
         # binarySearchTree.inorder(root)
-        binarySearchTree.insert(8, root)
+        root = binarySearchTree.insert(8, root)
         self.assertEqual(root.right.right.data, 8)
-        binarySearchTree.insert(1, root)
+        root = binarySearchTree.insert(1, root)
         self.assertEqual(1, root.left.left.left.data)
-        binarySearchTree.insert(7, root)
+        root = binarySearchTree.insert(7, root)
         self.assertEqual(7, root.right.data)
+
+    def testDelete(self):
+        binarySearchTree = BinarySearchTree(5)
+        root = binarySearchTree.getRoot()
+        root.left = BinaryTreeNode(3)
+        root.right = BinaryTreeNode(7)
+        root.left.left = BinaryTreeNode(2)
+        root.left.right = BinaryTreeNode(4)
+        root.right.left = BinaryTreeNode(6)
+        root.right.right = BinaryTreeNode(8)
+        root.left.left.left = BinaryTreeNode(1)
+        # binarySearchTree.inorder(root)
+        root = binarySearchTree.delete(1, root)
+        self.assertIsNone(root.left.left.left)
+        root = binarySearchTree.delete(4, root)
+        self.assertIsNone(root.left.right)
+        root = binarySearchTree.delete(3, root)
+        self.assertEqual(2, root.left.data)
+        root = binarySearchTree.delete(5, root)
+        self.assertEqual(6, root.data)
+        self.assertIsNone(root.right.left)
+
+    def testImbalance(self):
+        binarySearchTree = BinarySearchTree(1)
+        root = binarySearchTree.getRoot()
+        for i in range(2, 9):
+            root = binarySearchTree.insert(i, root)
+        k = [i for i in range(1, 9)]
+        node = root
+        for x in k:
+            self.assertEqual(node.data, x)
+            self.assertIsNone(node.left)
+            node = node.right
 
 
 main()
