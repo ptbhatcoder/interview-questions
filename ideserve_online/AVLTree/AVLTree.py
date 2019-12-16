@@ -5,35 +5,62 @@ while ospath.basename(ospath.normpath(curpath)) != 'ideserve_online':
     curpath = ospath.dirname(curpath)
 syspath.insert(0, curpath)
 
-from BinaryTree.BinaryTreeNode import BinaryTreeNode
-from BinarySearchTree.BinarySearchTree import BinarySearchTree
+from unittest import TestCase, main
 
 
-class AVLTree(BinarySearchTree):
+class AVLTreeNode():
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+        self.height = 0
+
+
+class AVLTree():
     treeRoot = None
 
     def __init__(self, data):
-        super.__init__(data)
+        self.treeRoot = AVLTreeNode(data)
         self.treeRoot.height = 0
 
     def getRoot(self):
         return self.treeRoot
 
-    def search(self, key, root):
-        return super.search(key, root)
+    def inorder(self, root):
+        if root:
+            self.inorder(root.left)
+            print('data:' + str(root.data))
+            self.inorder(root.right)
+
+    def search(self, key, root=treeRoot):
+        if not root:
+            return None
+
+        if root.data == key:
+            return root
+
+        if root.data < key:
+            return self.search(key, root.right)
+
+        return self.search(key, root.left)
 
     def findMin(self, root):
-        return super.findMin(root)
+        while root and root.left:
+            root = root.left
+        return root
 
     def findMax(self, root):
-        return super.findMax(root)
+        while root and root.right:
+            root = root.right
+        return root
 
     def __getHeight__(self, root):
-        if not root:
+        if root:
+            root.height = max(self.__getHeight__(root.left),
+                              self.__getHeight__(root.right)) + 1
+            return root.height
+        else:
             return 0
-        root.height = max(self.__getHeight__(root.left),
-                          self.__getHeight__(root.right)) + 1
-        return root.height
 
     def __getBalance__(self, root):
         if not root:
@@ -64,7 +91,7 @@ class AVLTree(BinarySearchTree):
 
     def insert(self, key, root):
         if not root:
-            root = BinaryTreeNode(key)
+            root = AVLTreeNode(key)
             root.height = 0
             return root
 
@@ -132,3 +159,23 @@ class AVLTree(BinarySearchTree):
 
         root.height = self.__getHeight__(root)
         return root
+
+
+class CodeTest(TestCase):
+    def testNoImbalanceInsert(self):
+        binarySearchTree = AVLTree(1)
+        root = binarySearchTree.getRoot()
+        for i in range(2, 9):
+            root = binarySearchTree.insert(i, root)
+
+        self.assertEqual(root.data, 4)
+        self.assertEqual(root.left.data, 2)
+        self.assertEqual(root.right.data, 6)
+        self.assertEqual(root.left.left.data, 1)
+        self.assertEqual(root.left.right.data, 3)
+        self.assertEqual(root.right.left.data, 5)
+        self.assertEqual(root.right.right.data, 7)
+        self.assertEqual(root.right.right.right.data, 8)
+
+
+main()
