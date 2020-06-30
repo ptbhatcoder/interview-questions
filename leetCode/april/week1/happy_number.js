@@ -18,34 +18,34 @@ Explanation:
 12 + 02 + 02 = 1
  */
 
- export const isHappy = num => {
-     const transform = val => {
-         let p = 0;
-         while(val){
-             digit = val%10;
-             p += digit*digit;
-             val = Math.floor(val/10);
-         }
-         return p;
-     }
+export const isHappy = (num) => {
+  const transform = (val) => {
+    let p = 0;
+    while (val) {
+      digit = val % 10;
+      p += digit * digit;
+      val = Math.floor(val / 10);
+    }
+    return p;
+  };
 
-     let hare = num;
-     let tortoise = num;
-     do {
-         hare = transform(transform(hare));
-         tortoise = transform(tortoise);
-     } while (hare !== tortoise);
+  let hare = num;
+  let tortoise = num;
+  do {
+    hare = transform(transform(hare));
+    tortoise = transform(tortoise);
+  } while (hare !== tortoise);
 
-     hare = num;
-     do {
-         hare = transform(hare);
-         tortoise = transform(tortoise);
-     } while(hare !== tortoise);
+  hare = num;
+  do {
+    hare = transform(hare);
+    tortoise = transform(tortoise);
+  } while (hare !== tortoise);
 
-     return hare === 1;
- }
+  return hare === 1;
+};
 
- /**
-  * Time complexity : O(number of steps to make num coverge to a value)
-  * Space complexity: O(1)
-  */
+/**
+ * Time complexity : O(number of steps to make num coverge to a value)
+ * Space complexity: O(1)
+ */
