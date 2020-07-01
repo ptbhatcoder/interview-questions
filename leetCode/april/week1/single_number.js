@@ -16,6 +16,10 @@ Input: [4,1,2,1,2]
 Output: 4
  */
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
 export const singleNumber = (input) =>
   input?.reduce((result, val) => result ^ val, 0) || 0;
 

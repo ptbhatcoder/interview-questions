@@ -18,6 +18,10 @@ Explanation:
 12 + 02 + 02 = 1
  */
 
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
 export const isHappy = (num) => {
   const transform = (val) => {
     let p = 0;
